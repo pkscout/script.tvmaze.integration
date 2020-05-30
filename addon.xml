@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.1.0" provider-name="pkscout">
+	<requires>
+		<import addon="xbmc.python" version="2.26.0"/>
+		<import addon="script.module.kodi-six" version="0.0.3" />
+		<import addon="script.module.requests" version="2.22.0" />
+	</requires>
+	<extension point="xbmc.python.script" library="default.py"/>
+	<extension point="xbmc.service" library="service.py" />
+	<extension point="xbmc.addon.metadata">
+		<news>
+v.0.1.0
+- initial release
+		</news>
+		<assets>
+			<icon>icon.png</icon>
+		</assets>
+		<summary lang="en_GB">Integration between Kodi and TV Maze.</summary>
+		<description lang="en_GB">This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.</description>
+		<platform>all</platform>
+		<license>GPL-3.0-only</license>
+		<forum></forum>
+		<website></website>
+		<source>https://github.com/pkscout/script.tvmaze.integration</source>
+	</extension>
+</addon>

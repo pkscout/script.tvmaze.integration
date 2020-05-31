@@ -59,3 +59,43 @@ msgstr ""
 msgctxt "#32106"
 msgid "Mark watched after"
 msgstr ""
+
+# empty strings from id 32106 to 32199
+
+# Dialog Headings
+
+msgctxt "#32200"
+msgid "API Credentials Needed"
+msgstr ""
+
+msgctxt "#32201"
+msgid "Select action"
+msgstr ""
+
+msgctxt "#32202"
+msgid "Select shows to follow"
+msgstr ""
+
+
+# empty strings from id 32202 to 32300
+
+#Dialog Messages
+
+msgctxt "#32301"
+msgid "TV Maze api credentials must be provided before continuing."
+msgstr ""
+
+msgctxt "#32302"
+msgid "Open settings"
+msgstr ""
+
+msgctxt "#32303"
+msgid "Select All (Click OK to reload list)"
+msgstr ""
+
+msgctxt "#32304"
+msgid "Deselect All (Click OK to reload list)"
+msgstr ""
+
+
+

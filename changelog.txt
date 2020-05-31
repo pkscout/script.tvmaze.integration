@@ -1,0 +1,8 @@
+v.0.1.0
+- initial release
+- support for marking episodes as acquired on Library import
+- support for adding shows as followed during import
+- support for marking episodes as watched after watching x% of the show
+
+v.0.2.0
+- support to manually add shows in library to followed shows

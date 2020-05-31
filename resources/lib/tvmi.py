@@ -3,8 +3,8 @@
 # *
 # *  original TV Maze Integration code by pkscout
 
-from kodi_six import xbmc
-import json, os, sys, time
+from kodi_six import xbmc, xbmcgui
+import json, os, re, sys, time
 from resources.lib.apis import tvmaze
 from resources.lib.fileops import readFile, writeFile
 from resources.lib.xlogger import Logger
@@ -21,20 +21,113 @@ def _logsafe_settings( settings ):
     show_in_log.pop( 'tvmaze_apikey', '' )
     return show_in_log
 
+def _add_followed( showname, tvmaze, lw ):
+    success, loglines, result = tvmaze.findSingleShow( showname )
+    lw.log( loglines )
+    if success:
+        showid = result.get( 'id', 0 )
+        if showid:
+            success, loglines, result = tvmaze.followShow( showid )
+            lw.log( loglines )
+    return
+
+def _get_json( method, params, lw ):
+    json_call = '{"jsonrpc":"2.0", "method":"%s", "params":%s, "id":1}' % (method, params)
+    lw.log( ['sending: %s' % json_call ])
+    response = xbmc.executeJSONRPC( json_call )
+    lw.log( ['the response was:', response] )
+    try:
+        r_dict = json.loads( response )
+    except ValueError:
+        r_dict = {}
+    return r_dict.get( 'result', {} )
+
 
 
 class tvmManual:
 
     def __init__( self ):
-        """Runs the audio profiler switcher manually."""
-        settings = loadSettings()
-        lw = Logger( preamble='[TVMI Manual]', logdebug=settings['debug'] )
-        lw.log( ['script version %s started' % settings['ADDONVERSION']], xbmc.LOGINFO )
-        lw.log( ['debug logging set to %s' % settings['debug']], xbmc.LOGINFO )
-        lw.log( ['SYS.ARGV: %s' % str(sys.argv)] )
-        lw.log( ['loaded settings', _logsafe_settings( settings )] )
+        """Runs some manual functions for following shows on TV Maze."""
+        self._init_vars()
+        self._startup()
+        options = [self.SETTINGS['ADDONLANGUAGE']( 32202 ), self.SETTINGS['ADDONLANGUAGE']( 32302 )]
+        ret = self.DIALOG.select( self.SETTINGS['ADDONLANGUAGE']( 32201 ), options )
+        self.LW.log( ['got back %s from the dialog box' % str( ret )] )
+        if ret == -1:
+            return
+        showlist = self._build_show_list()
+        if ret == 0:
+            ret = self._select_shows_dialog( showlist )
+            if not ret:
+                return
+            else:
+                self._add_shows( ret, showlist )
+        elif ret == 1:
+            self.SETTINGS['ADDON'].openSettings()
+        self.LW.log( ['script version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+
+
+    def _startup( self ):
+        self.LW.log( ['script version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+        self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGNOTICE )
+        self.LW.log( ['SYS.ARGV: %s' % str(sys.argv)] )
+        if not (self.SETTINGS['tvmaze_user'] and self.SETTINGS['tvmaze_apikey']):
+            self.DIALOG.ok( self.SETTINGS['ADDONLANGUAGE']( 32200 ), self.SETTINGS['ADDONLANGUAGE']( 32301 ) )
+            self.SETTINGS['ADDON'].openSettings()
+
+
+    def _init_vars( self ):
+        self.SETTINGS = loadSettings()
+        self.LW = Logger( preamble='[TVMI Manual]', logdebug=self.SETTINGS['debug'] )
+        self.LW.log( ['loaded settings', _logsafe_settings( self.SETTINGS )] )
         self.TVMAZE = tvmaze.API( user=self.SETTINGS['tvmaze_user'], apikey=self.SETTINGS['tvmaze_apikey'] )
-        lw.log( ['script version %s stopped' % settings['ADDONVERSION']], xbmc.LOGINFO )
+        self.DIALOG = xbmcgui.Dialog()
+        self.KODIMONITOR = xbmc.Monitor()
+
+
+    def _build_show_list( self ):
+        self.LW.log( ['building show list'] )
+        showlist = ['']
+        method = 'VideoLibrary.GetTVShows'
+        params = '{"properties":["title"]}'
+        items = sorted( _get_json( method, params, self.LW ).get( 'tvshows', {} ), key=lambda x:x['label'] )
+        for item in items:
+            showlist.append( item['label'] )
+        return showlist
+
+
+    def _select_shows_dialog( self, options ):
+        firstitem = self.SETTINGS['ADDONLANGUAGE']( 32303 )
+        response = False
+        while not response:
+            if firstitem == self.SETTINGS['ADDONLANGUAGE']( 32303 ):
+                preselect = []
+            else:
+                preselect = []
+                for i in range( 1,len( options ) ):
+                    preselect.append( i )
+            options[0] = firstitem
+            ret = self.DIALOG.multiselect( self.SETTINGS['ADDONLANGUAGE']( 32202 ), options, preselect=preselect )
+            self.LW.log( ['got back a response of:', ret] )
+            if not ret:
+                response = True
+            elif ret[0] == 0:
+                if firstitem == self.SETTINGS['ADDONLANGUAGE']( 32303 ):
+                    firstitem = self.SETTINGS['ADDONLANGUAGE']( 32304 )
+                else:
+                    firstitem = self.SETTINGS['ADDONLANGUAGE']( 32303 )
+            else:
+                response = True
+        return ret
+
+
+    def _add_shows( self, showchoices, showlist ):
+        self.LW.log( ['following shows'] )
+        for showchoice in showchoices:
+            if showchoice == 0:
+                continue
+            _add_followed( re.sub( r' \([0-9]{4}\)', '', showlist[showchoice] ), self.TVMAZE, self.LW )
+            self.KODIMONITOR.waitForAbort( 0.2 )
 
 
 
@@ -45,14 +138,14 @@ class tvmMonitor( xbmc.Monitor ):
         xbmc.Monitor.__init__( self )
         _upgrade()
         self._init_vars()
-        self.LW.log( ['background monitor version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
-        self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGINFO )
+        self.LW.log( ['background monitor version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+        self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGNOTICE )
         while not self.abortRequested():
             if self.waitForAbort( 10 ):
                 break
             if self.PLAYINGVIDEO:
                 self.PLAYINGVIDEOTIME = self.KODIPLAYER.getTime()
-        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
+        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
 
 
     def onNotification( self, sender, method, data ):
@@ -78,7 +171,7 @@ class tvmMonitor( xbmc.Monitor ):
                     self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
                     self._mark_episodes( 'playing' )
                 else:
-                    self.LW.log( ['item was not played long enough to be marked, skipping'] )
+                    self.LW.log( ['item was not played long enough to be marked, skipping'], xbmc.LOGNOTICE )
                 self._reset_playing()
         elif 'VideoLibrary.OnScanStarted' in method:
             data = json.loads( data )
@@ -136,7 +229,7 @@ class tvmMonitor( xbmc.Monitor ):
 
     def _update_followed_cache( self, showname ):
         self._load_show_overrides()
-        self._add_followed( showname )
+        _add_followed( showname, self.TVMAZE, self.LW )
         success, loglines, results = self.TVMAZE.getFollowedShows( params={'embed':'show'} )
         self.LW.log( loglines )
         if success:
@@ -178,7 +271,7 @@ class tvmMonitor( xbmc.Monitor ):
         if epid:
             method = 'VideoLibrary.GetEpisodeDetails'
             params = '{"episodeid":%s, "properties":["season", "episode", "tvshowid"]}' % str( epid )
-            r_dict = self._get_json( method, params )
+            r_dict = _get_json( method, params, self.LW )
             season = r_dict.get( 'episodedetails', {} ).get( 'season', 0 )
             episode = r_dict.get( 'episodedetails', {} ).get( 'episode', 0 )
             showid = r_dict.get( 'episodedetails', {} ).get( 'tvshowid', 0 )
@@ -186,7 +279,7 @@ class tvmMonitor( xbmc.Monitor ):
             if showid:
                 method = 'VideoLibrary.GetTVShowDetails'
                 params = '{"tvshowid":%s}' % str( showid )
-                r_dict = self._get_json( method, params )
+                r_dict = _get_json( method, params, self.LW )
                 showname = r_dict.get( 'tvshowdetails', {} ).get( 'label', '' )
                 self.LW.log( ['moving on with TV show name of %s' % showname] )
         if showname and season and episode:
@@ -199,18 +292,6 @@ class tvmMonitor( xbmc.Monitor ):
                 self.SCANNEDITEMS.append( item )
             elif thetype == 'playing':
                 self.PLAYINGITEMS.append( item )
-
-
-    def _get_json( self, method, params ):
-        json_call = '{"jsonrpc":"2.0", "method":"%s", "params":%s, "id":1}' % (method, params)
-        self.LW.log( ['sending: %s' % json_call ])
-        response = xbmc.executeJSONRPC( json_call )
-        self.LW.log( ['the response was:', response] )
-        try:
-            r_dict = json.loads( response )
-        except ValueError:
-            r_dict = {}
-        return r_dict.get( 'result', {} )
 
 
     def _mark_episodes( self, thetype ):
@@ -270,12 +351,12 @@ class tvmMonitor( xbmc.Monitor ):
             show_info['name'] = self.SHOWOVERRIDES[show_info['name']]
         except KeyError:
             self.LW.log( ['no show override found, using original'] )
-        self.LW.log( ['using show name of %s' % show_info['name']] )
+        self.LW.log( ['using show name of %s' % show_info['name']], xbmc.LOGNOTICE )
         for followed_show in self.TVMCACHE:
             followed_name = followed_show['_embedded']['show']['name']
             self.LW.log( ['checking for %s matching %s' % (show_info['name'], followed_name)] )
             if followed_name == show_info['name']:
-                self.LW.log( ['found match for %s' % show_info['name'] ] )
+                self.LW.log( ['found match for %s' % show_info['name'] ], xbmc.LOGNOTICE )
                 tvmazeid = followed_show['show_id']
                 break
         return tvmazeid

@@ -4,7 +4,7 @@
 # *  original TV Maze Integration code by pkscout
 
 from kodi_six import xbmc, xbmcgui
-import json, os, re, sys, time
+import json, os, re, sys
 from resources.lib.apis import tvmaze
 from resources.lib.fileops import readFile, writeFile
 from resources.lib.xlogger import Logger

@@ -73,9 +73,9 @@ class tvmMonitor( xbmc.Monitor ):
                 data = json.loads( data )
                 self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
                 played_percentage = (self.PLAYINGVIDEOTIME / self.PLAYINGVIDEOTOTALTIME) * 100
-                self.LW.log( ['got played time of %s and played percentage of %s' % (str( self.PLAYINGVIDEOTIME ), str( played_percentage ))] )
-                if played_percentage >= float( self.SETTINGS['precent_watched'] ):
-                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'] )
+                self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGNOTICE )
+                if played_percentage >= float( self.SETTINGS['percent_watched'] ):
+                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
                     self._mark_episodes( 'playing' )
                 else:
                     self.LW.log( ['item was not played long enough to be marked, skipping'] )

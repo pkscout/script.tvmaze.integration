@@ -8,7 +8,7 @@ SETTINGSLIST = [ {'name': 'version_upgrade', 'default':''},
                  {'name': 'add_followed', 'default': False},
                  {'name': 'mark_acquired', 'default': True},
                  {'name': 'mark_watched', 'default': True},
-                 {'name': 'precent_watched', 'default': 85},
+                 {'name': 'percent_watched', 'default': 85},
                  {'name': 'debug', 'default': False}
                ]
 

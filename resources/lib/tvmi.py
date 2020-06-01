@@ -196,7 +196,6 @@ class tvmManual:
             self.LW.log( ['building followed list'] )
         tvmazelist = ['']
         tvmazemap = {}
-        shows = {}
         if tagid:
             success, loglines, results = self.TVMAZE.getTaggedShows( tagid, params={'embed':'show'} )
         else:
@@ -216,6 +215,7 @@ class tvmManual:
         taglist = []
         tagmap = {}
         success, loglines, results = self.TVMAZE.getTags()
+        self.LW.log( loglines )
         if not success or not results:
             return [], {}
         items = sorted( results, key=lambda x:x['name'] )

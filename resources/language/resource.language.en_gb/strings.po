@@ -76,6 +76,23 @@ msgctxt "#32202"
 msgid "Select shows to follow"
 msgstr ""
 
+msgctxt "#32203"
+msgid "Select shows to unfollow"
+msgstr ""
+
+msgctxt "#32204"
+msgid "Select tag"
+msgstr ""
+
+msgctxt "#32205"
+msgid "Select shows to tag"
+msgstr ""
+
+msgctxt "#32206"
+msgid "Select shows to untag"
+msgstr ""
+
+
 
 # empty strings from id 32202 to 32300
 

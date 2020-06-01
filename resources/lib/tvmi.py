@@ -29,7 +29,7 @@ def _add_followed( showname, tvmaze, lw ):
         if showid:
             success, loglines, result = tvmaze.followShow( showid )
             lw.log( loglines )
-    return
+    return showid
 
 def _get_json( method, params, lw ):
     json_call = '{"jsonrpc":"2.0", "method":"%s", "params":%s, "id":1}' % (method, params)
@@ -47,22 +47,27 @@ def _get_json( method, params, lw ):
 class tvmManual:
 
     def __init__( self ):
-        """Runs some manual functions for following shows on TV Maze."""
+        """Runs some manual functions for following and tagging shows on TV Maze."""
         self._init_vars()
         self._startup()
-        options = [self.SETTINGS['ADDONLANGUAGE']( 32202 ), self.SETTINGS['ADDONLANGUAGE']( 32302 )]
+        options = [ self.SETTINGS['ADDONLANGUAGE']( 32202 ),
+                    self.SETTINGS['ADDONLANGUAGE']( 32203 ),
+                    self.SETTINGS['ADDONLANGUAGE']( 32205 ),
+                    self.SETTINGS['ADDONLANGUAGE']( 32206 ),
+                    self.SETTINGS['ADDONLANGUAGE']( 32302 ) ]
         ret = self.DIALOG.select( self.SETTINGS['ADDONLANGUAGE']( 32201 ), options )
         self.LW.log( ['got back %s from the dialog box' % str( ret )] )
         if ret == -1:
             return
-        showlist = self._build_show_list()
         if ret == 0:
-            ret = self._select_shows_dialog( showlist )
-            if not ret:
-                return
-            else:
-                self._add_shows( ret, showlist )
+            self._option_follow_shows()
         elif ret == 1:
+            self._option_unfollow_shows()
+        elif ret == 2:
+            self._option_tag_shows()
+        elif ret == 3:
+            self._option_untag_shows()
+        elif ret == 4:
             self.SETTINGS['ADDON'].openSettings()
         self.LW.log( ['script version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
 
@@ -85,18 +90,70 @@ class tvmManual:
         self.KODIMONITOR = xbmc.Monitor()
 
 
-    def _build_show_list( self ):
-        self.LW.log( ['building show list'] )
-        showlist = ['']
-        method = 'VideoLibrary.GetTVShows'
-        params = '{"properties":["title"]}'
-        items = sorted( _get_json( method, params, self.LW ).get( 'tvshows', {} ), key=lambda x:x['label'] )
-        for item in items:
-            showlist.append( item['label'] )
-        return showlist
+    def _option_follow_shows( self ):
+        showlist = self._build_show_list()
+        ret = self._select_shows_dialog( self.SETTINGS['ADDONLANGUAGE']( 32202 ), showlist )
+        if not ret:
+            return
+        else:
+            xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+            self._add_shows( ret, showlist )
+            xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 
-    def _select_shows_dialog( self, options ):
+    def _option_unfollow_shows( self ):
+        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+        followedlist, followedmap = self._build_tvmaze_list()
+        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+        ret = self._select_shows_dialog( self.SETTINGS['ADDONLANGUAGE']( 32203 ), followedlist )
+        if not ret:
+            return
+        else:
+            xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+            self._unfollow_shows( ret, followedlist, followedmap )
+            xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+
+
+    def _option_tag_shows( self ):
+        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+        taglist, tagmap = self._build_tag_list()
+        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+        ret = self.DIALOG.select( self.SETTINGS['ADDONLANGUAGE']( 32204 ), taglist )
+        if ret == -1:
+            return
+        tagid = tagmap[taglist[ret]]
+        showlist = self._build_show_list()
+        ret = self._select_shows_dialog( self.SETTINGS['ADDONLANGUAGE']( 32205 ), showlist )
+        if not ret:
+            return
+        else:
+            xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+            self._add_shows( ret, showlist, tagid=tagid )
+            xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+
+
+    def _option_untag_shows( self ):
+        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+        taglist, tagmap = self._build_tag_list()
+        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+        ret = self.DIALOG.select( self.SETTINGS['ADDONLANGUAGE']( 32204 ), taglist )
+        if ret == -1:
+            return
+        tagid = tagmap[taglist[ret]]
+        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+        taggedlist, taggedmap = self._build_tvmaze_list( tagid=tagid )
+        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+        ret = self._select_shows_dialog( self.SETTINGS['ADDONLANGUAGE']( 32206 ), taggedlist )
+        if not ret:
+            return
+        else:
+            xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+            self._unfollow_shows( ret, taggedlist, taggedmap, tagid=tagid )
+            xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+        return
+
+
+    def _select_shows_dialog( self, header, options ):
         firstitem = self.SETTINGS['ADDONLANGUAGE']( 32303 )
         response = False
         while not response:
@@ -107,7 +164,7 @@ class tvmManual:
                 for i in range( 1,len( options ) ):
                     preselect.append( i )
             options[0] = firstitem
-            ret = self.DIALOG.multiselect( self.SETTINGS['ADDONLANGUAGE']( 32202 ), options, preselect=preselect )
+            ret = self.DIALOG.multiselect( header, options, preselect=preselect )
             self.LW.log( ['got back a response of:', ret] )
             if not ret:
                 response = True
@@ -121,13 +178,83 @@ class tvmManual:
         return ret
 
 
-    def _add_shows( self, showchoices, showlist ):
-        self.LW.log( ['following shows'] )
+    def _build_show_list( self ):
+        self.LW.log( ['building show list'] )
+        showlist = ['']
+        method = 'VideoLibrary.GetTVShows'
+        params = '{"properties":["title"]}'
+        items = sorted( _get_json( method, params, self.LW ).get( 'tvshows', [] ), key=lambda x:x['label'] )
+        for item in items:
+            showlist.append( item['label'] )
+        return showlist
+
+
+    def _build_tvmaze_list( self, tagid = '' ):
+        if tagid:
+            self.LW.log( ['building tagged list'] )
+        else:
+            self.LW.log( ['building followed list'] )
+        tvmazelist = ['']
+        tvmazemap = {}
+        shows = {}
+        if tagid:
+            success, loglines, results = self.TVMAZE.getTaggedShows( tagid, params={'embed':'show'} )
+        else:
+            success, loglines, results = self.TVMAZE.getFollowedShows( params={'embed':'show'} )
+        self.LW.log( loglines )
+        if not success or not results:
+            return [], {}
+        items = sorted( results, key=lambda x:x['_embedded']['show']['name'] )
+        for item in items:
+            tvmazelist.append( item['_embedded']['show']['name'] )
+            tvmazemap[item['_embedded']['show']['name']] = item['show_id']
+        return tvmazelist, tvmazemap
+
+
+    def _build_tag_list( self ):
+        self.LW.log( ['building tag list'] )
+        taglist = []
+        tagmap = {}
+        success, loglines, results = self.TVMAZE.getTags()
+        if not success or not results:
+            return [], {}
+        items = sorted( results, key=lambda x:x['name'] )
+        for item in items:
+            taglist.append( item['name'] )
+            tagmap[item['name']] = item['id']
+        return taglist, tagmap
+
+
+    def _add_shows( self, showchoices, showlist, tagid = '' ):
+        if tagid:
+            self.LW.log( ['tagging shows'] )
+        else:
+            self.LW.log( ['following shows'] )
         for showchoice in showchoices:
             if showchoice == 0:
                 continue
-            _add_followed( re.sub( r' \([0-9]{4}\)', '', showlist[showchoice] ), self.TVMAZE, self.LW )
-            self.KODIMONITOR.waitForAbort( 0.2 )
+            showid = _add_followed( re.sub( r' \([0-9]{4}\)', '', showlist[showchoice] ), self.TVMAZE, self.LW )
+            if showid and tagid:
+                self.KODIMONITOR.waitForAbort( 0.12 )
+                success, loglines, result = self.TVMAZE.tagShow( showid, tagid )
+                self.LW.log( loglines )
+            self.KODIMONITOR.waitForAbort( 0.12 )
+
+
+    def _unfollow_shows( self, showchoices, showlist, showmap, tagid='' ):
+        if tagid:
+            self.LW.log( 'untagging shows' )
+        else:
+            self.LW.log( 'unfollowing shows' )
+        for showchoice in showchoices:
+            if showchoice == 0:
+                continue
+            if tagid:
+                success, loglines, result = self.TVMAZE.unTagShow( showmap.get( showlist[showchoice], 0 ), tagid )
+            else:
+                success, loglines, result = self.TVMAZE.unFollowShow( showmap.get( showlist[showchoice], 0 ) )
+            self.LW.log( loglines )
+            self.KODIMONITOR.waitForAbort( 0.12 )
 
 
 
@@ -143,8 +270,8 @@ class tvmMonitor( xbmc.Monitor ):
         while not self.abortRequested():
             if self.waitForAbort( 10 ):
                 break
-            if self.PLAYINGVIDEO:
-                self.PLAYINGVIDEOTIME = self.KODIPLAYER.getTime()
+            if self.PLAYINGEPISODE:
+                self.PLAYINGEPISODETIME = self.KODIPLAYER.getTime()
         self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
 
 
@@ -153,19 +280,18 @@ class tvmMonitor( xbmc.Monitor ):
             self.waitForAbort( 1 )
             if self.KODIPLAYER.isPlayingVideo():
                 data = json.loads( data )
-                is_a_file = not self.KODIPLAYER.getPlayingFile().startswith(('plugin://','upnp://','pvr://'))
                 is_an_episode = data.get( 'item', {} ).get( 'type', '' ) == 'episode'
-                if is_a_file and is_an_episode:
+                if is_an_episode:
                     self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
-                    self.PLAYINGVIDEO = True
-                    self.PLAYINGVIDEOTOTALTIME = self.KODIPLAYER.getTotalTime()
+                    self.PLAYINGEPISODE = True
+                    self.PLAYINGEPISODETOTALTIME = self.KODIPLAYER.getTotalTime()
                     self._get_show_ep_info( 'playing', data )
-        elif 'Player.OnStop' in method and self.PLAYINGVIDEO:
-            if self.PLAYINGVIDEO:
-                self.PLAYINGVIDEO = False
+        elif 'Player.OnStop' in method and self.PLAYINGEPISODE:
+            if self.PLAYINGEPISODE:
+                self.PLAYINGEPISODE = False
                 data = json.loads( data )
                 self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
-                played_percentage = (self.PLAYINGVIDEOTIME / self.PLAYINGVIDEOTOTALTIME) * 100
+                played_percentage = (self.PLAYINGEPISODETIME / self.PLAYINGEPISODETOTALTIME) * 100
                 self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGNOTICE )
                 if played_percentage >= float( self.SETTINGS['percent_watched'] ):
                     self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
@@ -207,10 +333,10 @@ class tvmMonitor( xbmc.Monitor ):
 
 
     def _reset_playing( self ):
-        self.PLAYINGVIDEO = False
+        self.PLAYINGEPISODE = False
         self.PLAYINGITEMS = []
-        self.PLAYINGVIDEOTIME = 0
-        self.PLAYINGVIDEOTOTALTIME = 0
+        self.PLAYINGEPISODETIME = 0
+        self.PLAYINGEPISODETOTALTIME = 0
 
 
     def _reset_scanned( self ):

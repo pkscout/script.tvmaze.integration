@@ -160,9 +160,6 @@ class tvmContext:
         self.DIALOG = xbmcgui.Dialog()
         self.KODIMONITOR = xbmc.Monitor()
         self.TVMCACHEFILE = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'tvm_followed_cache.json' )
-        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
-        self.TVMCACHE = _update_followed_cache( self.TVMCACHEFILE, self.TVMAZE, self.LW )
-        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 
     def _get_details_from_path( self, thepath ):

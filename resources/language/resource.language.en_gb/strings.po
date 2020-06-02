@@ -92,9 +92,7 @@ msgctxt "#32206"
 msgid "Select shows to untag"
 msgstr ""
 
-
-
-# empty strings from id 32202 to 32300
+# empty strings from id 32207 to 32300
 
 #Dialog Messages
 
@@ -114,5 +112,42 @@ msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
 msgstr ""
 
+# empty strings from 32305 to 32400
 
+# Context Menu
 
+msgctxt "#32401"
+msgid "TV Maze"
+msgstr ""
+
+msgctxt "#32402"
+msgid "Follow show"
+msgstr ""
+
+msgctxt "#32403"
+msgid "Unfollow show"
+msgstr ""
+
+msgctxt "#32404"
+msgid "Tag show"
+msgstr ""
+
+msgctxt "#32405"
+msgid "Untag show"
+msgstr ""
+
+msgctxt "#32406"
+msgid "Mark episode acquired"
+msgstr ""
+
+msgctxt "#32407"
+msgid "Mark episode watched"
+msgstr ""
+
+msgctxt "#32408"
+msgid "Mark episode skipped"
+msgstr ""
+
+msgctxt "#32409"
+msgid "Unmark episode"
+msgstr ""

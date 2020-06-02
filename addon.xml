@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.3.0" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.4.0" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.26.0"/>
 		<import addon="script.module.kodi-six" version="0.0.3" />
@@ -7,10 +7,50 @@
 	</requires>
 	<extension point="xbmc.python.script" library="default.py"/>
 	<extension point="xbmc.service" library="service.py" />
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+		    <menu>
+				<label>32401</label>
+				<visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
+				<item library="context-follow.py">
+					<label>32402</label>
+					<visible>Container.Content(tvshows)</visible>
+				</item>
+				<item library="context-unfollow.py">
+					<label>32403</label>
+					<visible>Container.Content(tvshows)</visible>
+				</item>
+				<item library="context-tag.py">
+					<label>32404</label>
+					<visible>Container.Content(tvshows)</visible>
+				</item>
+				<item library="context-untag.py">
+					<label>32405</label>
+					<visible>Container.Content(tvshows)</visible>
+				</item>
+				<item library="context-mark-acquired.py">
+					<label>32406</label>
+					<visible>Container.Content(episodes)</visible>
+				</item>
+				<item library="context-mark-watched.py">
+					<label>32407</label>
+					<visible>Container.Content(episodes)</visible>
+				</item>
+				<item library="context-mark-skipped.py">
+					<label>32408</label>
+					<visible>Container.Content(episodes)</visible>
+				</item>
+				<item library="context-unmark.py">
+					<label>32409</label>
+					<visible>Container.Content(episodes)</visible>
+				</item>
+			</menu>
+	  </menu>
+	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.0.3.0
-- support to manually tag and untag shows
+v.0.4.0
+- support for context menu to manage show tags, show follows, and episode marks
 		</news>
 		<assets>
 			<icon>icon.png</icon>

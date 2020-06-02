@@ -139,7 +139,7 @@ def _startup( lw, settings, dialog ):
 class tvmContext:
 
     def __init__( self, action ):
-        """Allows access to TV Maze from context menu"""
+        """Allows access to TV Maze from context menu."""
         self._init_vars()
         _startup( self.LW, self.SETTINGS, self.DIALOG )
         self.LW.log( ['list item label: %s' % sys.listitem.getLabel()] )

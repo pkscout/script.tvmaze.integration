@@ -12,35 +12,35 @@
 		    <menu>
 				<label>32401</label>
 				<visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
-				<item library="context-follow.py">
+				<item library="context.py" args="follow">
 					<label>32402</label>
 					<visible>Container.Content(tvshows)</visible>
 				</item>
-				<item library="context-unfollow.py">
+				<item library="context.py" args="unfollow">
 					<label>32403</label>
 					<visible>Container.Content(tvshows)</visible>
 				</item>
-				<item library="context-tag.py">
+				<item library="context.py" args="tag">
 					<label>32404</label>
 					<visible>Container.Content(tvshows)</visible>
 				</item>
-				<item library="context-untag.py">
+				<item library="context.py" args="untag">
 					<label>32405</label>
 					<visible>Container.Content(tvshows)</visible>
 				</item>
-				<item library="context-mark-acquired.py">
+				<item library="context.py" args="mark_acquired">
 					<label>32406</label>
 					<visible>Container.Content(episodes)</visible>
 				</item>
-				<item library="context-mark-watched.py">
+				<item library="context.py" args="mark_watched">
 					<label>32407</label>
 					<visible>Container.Content(episodes)</visible>
 				</item>
-				<item library="context-mark-skipped.py">
+				<item library="context.py" args="mark_skipped">
 					<label>32408</label>
 					<visible>Container.Content(episodes)</visible>
 				</item>
-				<item library="context-unmark.py">
+				<item library="context.py" args="unmark">
 					<label>32409</label>
 					<visible>Container.Content(episodes)</visible>
 				</item>

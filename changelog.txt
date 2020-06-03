@@ -1,3 +1,6 @@
+v.0.4.1~beta2
+- change in how cache is managed
+
 v.0.4.1~beta1
 - first public release
 

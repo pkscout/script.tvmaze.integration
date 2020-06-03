@@ -6,7 +6,7 @@
 from kodi_six import xbmc, xbmcgui
 import json, os, re, sys
 from resources.lib.apis import tvmaze
-from resources.lib.fileops import *
+from resources.lib.fileops import readFile, writeFile
 from resources.lib.xlogger import Logger
 from resources.lib.tvmisettings import loadSettings
 
@@ -35,20 +35,29 @@ def _manage_followed( showname, action, tvmazeapi, lw ):
             lw.log( loglines )
     return showid
 
-def _mark_one( show_info, mark_type, tvmcache, tvmcachefile, tvmazeapi, lw ):
+def _mark_one( show_info, mark_type, add_followed, tvmcache, tvmcachefile, tvmazeapi, lw ):
     lw.log( ['starting process to mark show'] )
     tvmazeid = ''
     if show_info:
-        lw.log( ['show info found'] )
-        if tvmcache:
-            lw.log( ['trying with cached TV Maze information first'] )
+        lw.log( ['show info found, trying to match with cached TV Maze information first'] )
+        tvmazeid = _match_from_followed_shows( show_info, tvmcache, lw )
+        if not tvmazeid:
+            lw.log( ['no match, loading cache file from disk and trying again'] )
+            loglines, results = readFile( tvmcachefile )
+            lw.log( loglines )
+            if results:
+                tvmcache = json.loads( results )
+            else:
+                tvmcache = []
             tvmazeid = _match_from_followed_shows( show_info, tvmcache, lw )
         if not tvmazeid:
-            lw.log( ['no match, getting updated followed shows from TV Maze'] )
-            tvmcache = _update_followed_cache( tvmcachefile, tvmazeapi, lw, showname=show_info['name'] )
-            if tvmcache:
-                lw.log( ['trying again with updated list of followed shows'] )
-                tvmazeid = _match_from_followed_shows( show_info, tvmcache, lw )
+            lw.log( ['no match, getting updated followed shows from TV Maze and trying again'] )
+            if add_followed:
+                showname = show_info['name']
+            else:
+                showname = ''
+            tvmcache = _update_followed_cache( tvmcachefile, tvmazeapi, lw, showname=showname )
+            tvmazeid = _match_from_followed_shows( show_info, tvmcache, lw )
         if tvmazeid:
             lw.log( ['found tvmazeid of %s' % tvmazeid, 'attempting to get episode id'] )
             params = {'season':show_info['season'], 'number':show_info['episode']}
@@ -101,7 +110,7 @@ def _build_tag_list( tvmazeapi, lw ):
         tagmap[item['name']] = item['id']
     return taglist, tagmap
 
-def _update_followed_cache( tvmcachefile, tvmazeapi, lw, showname = '' ):
+def _update_followed_cache( tvmcachefile, tvmazeapi, lw, showname='' ):
     if showname:
         _manage_followed( showname, 'follow', tvmazeapi, lw )
     success, loglines, results = tvmazeapi.getFollowedShows( params={'embed':'show'} )
@@ -186,7 +195,6 @@ class tvmContext:
         xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
         _manage_followed( sys.listitem.getLabel(), action, self.TVMAZE, self.LW )
         xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
-        deleteFile( self.TVMCACHEFILE )
 
 
     def _manage_show_tag( self, action ):
@@ -218,7 +226,7 @@ class tvmContext:
         else:
             mark_type = -1
         xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
-        _mark_one( show_info, mark_type, self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
+        _mark_one( show_info, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
         xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 
@@ -394,7 +402,6 @@ class tvmManual:
                 success, loglines, result = self.TVMAZE.tagShow( showid, tagid )
                 self.LW.log( loglines )
             self.KODIMONITOR.waitForAbort( 0.12 )
-        deleteFile( self.TVMCACHEFILE )
 
 
     def _unfollow_shows( self, showchoices, showlist, showmap, tagid='' ):
@@ -411,7 +418,6 @@ class tvmManual:
                 success, loglines, result = self.TVMAZE.unFollowShow( showmap.get( showlist[showchoice], 0 ) )
             self.LW.log( loglines )
             self.KODIMONITOR.waitForAbort( 0.12 )
-        deleteFile( self.TVMCACHEFILE )
 
 
 
@@ -452,7 +458,6 @@ class tvmMonitor( xbmc.Monitor ):
                 self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGNOTICE )
                 if played_percentage >= float( self.SETTINGS['percent_watched'] ):
                     self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
-                    self._check_for_cache_file()
                     self._mark_episodes( 'playing' )
                 else:
                     self.LW.log( ['item was not played long enough to be marked, skipping'], xbmc.LOGNOTICE )
@@ -468,7 +473,6 @@ class tvmMonitor( xbmc.Monitor ):
         elif 'VideoLibrary.OnScanFinished' in method and self.SCANSTARTED:
             data = json.loads( data )
             self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
-            self._check_for_cache_file()
             self._mark_episodes( 'scanned' )
             self._reset_scanned()
 
@@ -502,12 +506,6 @@ class tvmMonitor( xbmc.Monitor ):
         self.SCANSTARTED = False
         self.SCANNEDITEMS = []
 
-
-    def _check_for_cache_file( self ):
-        exists, loglines = checkPath( self.TVMCACHEFILE, createdir=False )
-        self.LW.log( loglines )
-        if not exists:
-            self.TVMCACHE =[]
 
     def _get_show_ep_info( self, thetype, data ):
         showid = 0
@@ -548,6 +546,6 @@ class tvmMonitor( xbmc.Monitor ):
             mark_type = 1
             items = self.SCANNEDITEMS
         for item in items:
-            self.TVMCACHE = _mark_one( item, mark_type, self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
+            self.TVMCACHE = _mark_one( item, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
 
 

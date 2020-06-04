@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.4.101~beta2" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.4.101~beta3" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
 		<import addon="script.module.requests" version="2.22.0+matrix.1" />
@@ -49,14 +49,8 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.0.4.101~beta2
-- first public release
-- support for context menu to manage show tags, show follows, and episode marks
-- support to manually tag and untag shows
-- support to manually follow and unfollow shows
-- support for marking episodes as acquired on Library import
-- support for adding shows as followed during import
-- support for marking episodes as watched after watching x% of the show
+v.0.4.101~beta3
+- fix for crash if Kodi player not playing when trying to get playing time of episode
 		</news>
 		<assets>
 			<icon>icon.png</icon>

@@ -434,8 +434,11 @@ class tvmMonitor( xbmc.Monitor ):
             if self.waitForAbort( 10 ):
                 break
             if self.PLAYINGEPISODE:
-                self.PLAYINGEPISODETIME = self.KODIPLAYER.getTime()
-        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
+                try:
+                    self.PLAYINGEPISODETIME = self.KODIPLAYER.getTime()
+                except RuntimeError:
+                    self.PLAYINGEPISODETIME = self.PLAYINGEPISODETIME
+        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
 
 
     def onNotification( self, sender, method, data ):

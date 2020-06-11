@@ -87,6 +87,8 @@ def _mark_one( show_info, mark_type, add_followed, tvmcache, tvmcachefile, tvmaz
 def _match_from_followed_shows( show_info, tvmcache, lw ):
     tvmazeid = ''
     lw.log( ['using show name of %s' % show_info['name']], xbmc.LOGNOTICE )
+    if not tvmcache:
+        return ''
     for followed_show in tvmcache:
         followed_name = followed_show['_embedded']['show']['name']
         lw.log( ['checking for %s matching %s' % (show_info['name'], followed_name)] )

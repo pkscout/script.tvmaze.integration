@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.4.1~beta3" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.4.1~beta4" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.26.0"/>
 		<import addon="script.module.kodi-six" version="0.0.3" />
@@ -49,8 +49,8 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.0.4.1~beta3
-- fix for crash if Kodi player not playing when trying to get playing time of episode
+v.0.4.1~beta4
+- fix for crash if no tvmaze cache present
 		</news>
 		<assets>
 			<icon>icon.png</icon>

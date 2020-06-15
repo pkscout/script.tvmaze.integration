@@ -228,7 +228,7 @@ class tvmContext:
         else:
             mark_type = -1
         xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
-        _mark_one( show_info, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
+        _mark_one( show_info, mark_type, self.SETTINGS['add_followed'], [], self.TVMCACHEFILE, self.TVMAZE, self.LW )
         xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 

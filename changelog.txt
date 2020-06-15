@@ -1,4 +1,4 @@
-v.0.5.0~beta1
+v.0.6.0~beta1
 - added option to mark shows as watched on TV Maze when deleting from Kodi library
 
 v.0.4.1~beta4

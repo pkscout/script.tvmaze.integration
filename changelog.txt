@@ -1,3 +1,6 @@
+v.0.5.0~beta1
+- added option to mark shows as watched on TV Maze when deleting from Kodi library
+
 v.0.4.1~beta4
 - fix for crash if no tvmaze cache present
 

@@ -60,7 +60,11 @@ msgctxt "#32106"
 msgid "Mark watched after"
 msgstr ""
 
-# empty strings from id 32106 to 32199
+msgctxt "#32107"
+msgid "Mark watched when removing from Kodi"
+msgstr ""
+
+# empty strings from id 32108 to 32199
 
 # Dialog Headings
 

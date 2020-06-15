@@ -228,7 +228,7 @@ class tvmContext:
         else:
             mark_type = -1
         xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
-        _mark_one( show_info, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
+        _mark_one( show_info, mark_type, self.SETTINGS['add_followed'], [], self.TVMCACHEFILE, self.TVMAZE, self.LW )
         xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 
@@ -480,6 +480,12 @@ class tvmMonitor( xbmc.Monitor ):
             self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
             self._mark_episodes( 'scanned' )
             self._reset_scanned()
+        elif 'VideoLibrary.OnRemove' in method and self.SETTINGS['mark_on_remove']:
+            data = json.loads( data )
+            self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
+            self._get_show_ep_info( 'removed', data )
+            self._mark_episodes( 'removed' )
+            self.REMOVEDITEMS = []
 
 
     def onSettingsChanged( self ):
@@ -491,10 +497,11 @@ class tvmMonitor( xbmc.Monitor ):
         self.LW = Logger( preamble='[TVMI Monitor]', logdebug=self.SETTINGS['debug'] )
         self.LW.log( ['the settings are:', _logsafe_settings( self.SETTINGS )] )
         self.TVMCACHEFILE = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'tvm_followed_cache.json' )
-        self.CACHEUPDATEPATH = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'tvm_cache_updated.json' )
+        self.EPISODECACHE = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'episode_cache.json' )
         self.KODIPLAYER = xbmc.Player()
         self.TVMAZE = tvmaze.API( user=self.SETTINGS['tvmaze_user'], apikey=self.SETTINGS['tvmaze_apikey'] )
         self.TVMCACHE = _update_followed_cache( self.TVMCACHEFILE, self.TVMAZE, self.LW )
+        self.REMOVEDITEMS = []
         self._reset_playing()
         self._reset_scanned()
         self.LW.log( ['initialized variables'] )
@@ -532,6 +539,18 @@ class tvmMonitor( xbmc.Monitor ):
                 r_dict = _get_json( method, params, self.LW )
                 showname = r_dict.get( 'tvshowdetails', {} ).get( 'label', '' )
                 self.LW.log( ['moving on with TV show name of %s' % showname] )
+        elif thetype == 'removed':
+            epid = data.get( 'id', 0 )
+            loglines, episode_cache = readFile( self.EPISODECACHE )
+            self.LW.log( loglines )
+            if episode_cache:
+                self.LW.log( ['checking in cache for epid of %s' % str( epid )] )
+                ep_info = json.loads( episode_cache ).get( str( epid ), {} )
+            else:
+                ep_info = {}
+            showname = ep_info.get( 'name', '' )
+            season = ep_info.get( 'season', 0 )
+            episode = ep_info.get( 'episode', 0 )
         if showname and season and episode:
             item = {'name':showname, 'season':season, 'episode':episode}
         else:
@@ -540,16 +559,41 @@ class tvmMonitor( xbmc.Monitor ):
             self.LW.log( ['storing item data of:', item] )
             if thetype == 'scanned':
                 self.SCANNEDITEMS.append( item )
+                if self.SETTINGS['mark_on_remove']:
+                    self._update_episode_cache( epid, item=item )
             elif thetype == 'playing':
                 self.PLAYINGITEMS.append( item )
+            elif thetype == 'removed':
+                self.REMOVEDITEMS.append( item )
+                self._update_episode_cache( epid )
+
+
+    def _update_episode_cache( self, epid, item=None ):
+        loglines, episode_cache = readFile( self.EPISODECACHE )
+        self.LW.log( loglines )
+        if episode_cache:
+            epcache_json = json.loads( episode_cache )
+        else:
+            epcache_json = {}
+        if item:
+            epcache_json[str( epid )] = item
+        else:
+            del epcache_json[str( epid )]
+        success, loglines = writeFile( json.dumps( epcache_json ), self.EPISODECACHE, 'w' )
+        self.LW.log( loglines )
 
 
     def _mark_episodes( self, thetype ):
-        mark_type = 0
-        items = self.PLAYINGITEMS
-        if thetype == 'scanned':
+        items = []
+        if thetype == 'playing':
+            mark_type = 0
+            items = self.PLAYINGITEMS
+        elif thetype == 'scanned':
             mark_type = 1
             items = self.SCANNEDITEMS
+        elif thetype == 'removed':
+            mark_type = 0
+            items = self.REMOVEDITEMS
         for item in items:
             self.TVMCACHE = _mark_one( item, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
 

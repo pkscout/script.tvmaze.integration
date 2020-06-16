@@ -552,7 +552,7 @@ class tvmMonitor( xbmc.Monitor ):
             season = ep_info.get( 'season', 0 )
             episode = ep_info.get( 'episode', 0 )
         if showname and season and episode:
-            item = {'name':showname, 'season':season, 'episode':episode}
+            item = {'epid': epid, 'name':showname, 'season':season, 'episode':episode}
         else:
             item = {}
         if item:
@@ -595,6 +595,8 @@ class tvmMonitor( xbmc.Monitor ):
             mark_type = 0
             items = self.REMOVEDITEMS
         for item in items:
+            if self.SETTINGS['mark_on_remove'] and not thetype == 'scanned':
+                self._update_episode_cache( item.get( 'epid', 0 ) )
             self.TVMCACHE = _mark_one( item, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
 
 

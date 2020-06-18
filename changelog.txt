@@ -1,3 +1,6 @@
+v.0.6.2~beta1
+- changed OnUpdate to cache raw data and then process it all when scan is finished
+
 v.0.6.1~beta1
 - added logic so if show is marked after playback it isn't marked again at delete
 

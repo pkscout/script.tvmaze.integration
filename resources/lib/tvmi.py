@@ -474,10 +474,16 @@ class tvmMonitor( xbmc.Monitor ):
         elif 'VideoLibrary.OnUpdate' in method and self.SCANSTARTED:
             data = json.loads( data )
             self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
-            self._get_show_ep_info( 'scanned', data )
+            self.SCANNEDDATA.append( data )
         elif 'VideoLibrary.OnScanFinished' in method and self.SCANSTARTED:
             data = json.loads( data )
             self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
+            for item in self.SCANNEDDATA:
+                self._get_show_ep_info( 'scanned', item )
+                if self.abortRequested():
+                    break
+            if self.SETTINGS['mark_on_remove']:
+                self._update_episode_cache( items=self.SCANNEDITEMS )
             self._mark_episodes( 'scanned' )
             self._reset_scanned()
         elif 'VideoLibrary.OnRemove' in method and self.SETTINGS['mark_on_remove']:
@@ -517,6 +523,7 @@ class tvmMonitor( xbmc.Monitor ):
     def _reset_scanned( self ):
         self.SCANSTARTED = False
         self.SCANNEDITEMS = []
+        self.SCANNEDDATA = []
 
 
     def _get_show_ep_info( self, thetype, data ):
@@ -559,28 +566,34 @@ class tvmMonitor( xbmc.Monitor ):
             self.LW.log( ['storing item data of:', item] )
             if thetype == 'scanned':
                 self.SCANNEDITEMS.append( item )
-                if self.SETTINGS['mark_on_remove']:
-                    self._update_episode_cache( epid, item=item )
             elif thetype == 'playing':
                 self.PLAYINGITEMS.append( item )
             elif thetype == 'removed':
                 self.REMOVEDITEMS.append( item )
-                self._update_episode_cache( epid )
+                self._update_episode_cache( epid=epid )
 
 
-    def _update_episode_cache( self, epid, item=None ):
+    def _update_episode_cache( self, epid=None, item=None, items=None ):
         loglines, episode_cache = readFile( self.EPISODECACHE )
         self.LW.log( loglines )
+        cache_changed = True
         if episode_cache:
             epcache_json = json.loads( episode_cache )
         else:
             epcache_json = {}
-        if item:
-            epcache_json[str( epid )] = item
-        else:
-            del epcache_json[str( epid )]
-        success, loglines = writeFile( json.dumps( epcache_json ), self.EPISODECACHE, 'w' )
-        self.LW.log( loglines )
+        if epid:
+            try:
+                del epcache_json[str( epid )]
+            except KeyError:
+                cache_changed = False
+        elif item:
+            epcache_json[str( item['epid'] )] = item
+        elif items:
+            for item in items:
+                epcache_json[str( item['epid'] )] = item
+        if cache_changed:
+            success, loglines = writeFile( json.dumps( epcache_json ), self.EPISODECACHE, 'w' )
+            self.LW.log( loglines )
 
 
     def _mark_episodes( self, thetype ):
@@ -596,7 +609,9 @@ class tvmMonitor( xbmc.Monitor ):
             items = self.REMOVEDITEMS
         for item in items:
             if self.SETTINGS['mark_on_remove'] and not thetype == 'scanned':
-                self._update_episode_cache( item.get( 'epid', 0 ) )
+                self._update_episode_cache( epid=item.get( 'epid', 0 ) )
             self.TVMCACHE = _mark_one( item, mark_type, self.SETTINGS['add_followed'], self.TVMCACHE, self.TVMCACHEFILE, self.TVMAZE, self.LW )
+            if self.abortRequested():
+                break
 
 

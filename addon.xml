@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.6.101~beta1" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.6.102~beta1" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0"/>
 		<import addon="script.module.requests" version="2.22.0+matrix.1" />
@@ -49,8 +49,8 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.0.6.101~beta1
-- added logic so if show is marked after playback it isn't marked again at delete
+v.0.6.102~beta1
+- changed OnUpdate to cache raw data and then process it all when scan is finished
 		</news>
 		<assets>
 			<icon>icon.png</icon>

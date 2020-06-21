@@ -1,3 +1,6 @@
+v.0.6.2~beta2
+- better hiding of TVMaze context menu when it shouldn't be used
+
 v.0.6.2~beta1
 - changed OnUpdate to cache raw data and then process it all when scan is finished
 

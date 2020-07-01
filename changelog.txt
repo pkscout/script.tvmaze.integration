@@ -1,28 +1,15 @@
-v.0.6.2~beta2
+v.0.6.2
 - better hiding of TVMaze context menu when it shouldn't be used
-
-v.0.6.2~beta1
 - changed OnUpdate to cache raw data and then process it all when scan is finished
 
-v.0.6.1~beta1
+v.0.6.1
 - added logic so if show is marked after playback it isn't marked again at delete
 
-v.0.6.0~beta2
+v.0.6.0
 - fix for crash if marking shows from context menu
-
-v.0.6.0~beta1
 - added option to mark shows as watched on TV Maze when deleting from Kodi library
 
-v.0.4.1~beta4
-- fix for crash if no tvmaze cache present
-
-v.0.4.1~beta3
-- fix for crash if Kodi player not playing when trying to get playing time of episode
-
-v.0.4.1~beta2
-- change in how cache is managed
-
-v.0.4.1~beta1
+v.0.4.1
 - first public release
 
 v.0.4.0

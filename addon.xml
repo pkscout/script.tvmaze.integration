@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.6.2~beta2" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.6.2" provider-name="pkscout">
 	<requires>
 		<import addon="xbmc.python" version="2.26.0"/>
 		<import addon="script.module.kodi-six" version="0.0.3" />
@@ -48,8 +48,14 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<news>
-v.0.6.2~beta2
-- better hiding of TVMaze context menu when it shouldn't be used
+v.0.6.2
+- first public release
+- support for context menu to manage show tags, show follows, and episode marks
+- support to manually tag and untag shows
+- support to manually follow and unfollow shows
+- support for marking episodes as acquired on Library import
+- support for adding shows as followed during import
+- support for marking episodes as watched after watching x% of the show or when deleted from library
 		</news>
 		<assets>
 			<icon>icon.png</icon>

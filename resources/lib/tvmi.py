@@ -86,7 +86,7 @@ def _mark_one( show_info, mark_type, add_followed, tvmcache, tvmcachefile, tvmaz
 
 def _match_from_followed_shows( show_info, tvmcache, lw ):
     tvmazeid = ''
-    lw.log( ['using show name of %s' % show_info['name']], xbmc.LOGNOTICE )
+    lw.log( ['using show name of %s' % show_info['name']], xbmc.LOGINFO )
     if not tvmcache:
         return ''
     for followed_show in tvmcache:
@@ -440,7 +440,7 @@ class tvmMonitor( xbmc.Monitor ):
                     self.PLAYINGEPISODETIME = self.KODIPLAYER.getTime()
                 except RuntimeError:
                     self.PLAYINGEPISODETIME = self.PLAYINGEPISODETIME
-        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
 
 
     def onNotification( self, sender, method, data ):
@@ -462,7 +462,7 @@ class tvmMonitor( xbmc.Monitor ):
                 played_percentage = (self.PLAYINGEPISODETIME / self.PLAYINGEPISODETOTALTIME) * 100
                 self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGINFO )
                 if played_percentage >= float( self.SETTINGS['percent_watched'] ):
-                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
+                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGINFO )
                     self._mark_episodes( 'playing' )
                 else:
                     self.LW.log( ['item was not played long enough to be marked, skipping'], xbmc.LOGINFO )

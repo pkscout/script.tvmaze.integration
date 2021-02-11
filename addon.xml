@@ -52,6 +52,7 @@
 - added option to hide context menu items
 - new language support via Weblate
 - cleanup of backend code
+		</news>
 		<assets>
 			<icon>icon.png</icon>
 		</assets>

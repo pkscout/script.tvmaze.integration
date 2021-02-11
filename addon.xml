@@ -11,52 +11,46 @@
 		<menu id="kodi.core.main">
 		    <menu>
 				<label>32401</label>
+				<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false)</visible>
 				<item library="context.py" args="follow">
 					<label>32402</label>
-					<visible>Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="unfollow">
 					<label>32403</label>
-					<visible>Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="tag">
 					<label>32404</label>
-					<visible>Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="untag">
 					<label>32405</label>
-					<visible>Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="mark_acquired">
 					<label>32406</label>
-					<visible>Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="mark_watched">
 					<label>32407</label>
-					<visible>Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="mark_skipped">
 					<label>32408</label>
-					<visible>Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 				<item library="context.py" args="unmark">
 					<label>32409</label>
-					<visible>Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
+					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
 			</menu>
 	  </menu>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<news>
-v.0.6.102
-- first public release
-- support for context menu to manage show tags, show follows, and episode marks
-- support to manually tag and untag shows
-- support to manually follow and unfollow shows
-- support for marking episodes as acquired on Library import
-- support for adding shows as followed during import
-- support for marking episodes as watched after watching x% of the show or when deleted from library
-		</news>
+		<news>v.0.7.0+matrix.1
+- added option to hide context menu items
+- cleanup of backend code
 		<assets>
 			<icon>icon.png</icon>
 		</assets>

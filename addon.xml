@@ -50,6 +50,7 @@
 	<extension point="xbmc.addon.metadata">
 		<news>v.0.7.0+matrix.1
 - added option to hide context menu items
+- new language support via Weblate
 - cleanup of backend code
 		<assets>
 			<icon>icon.png</icon>

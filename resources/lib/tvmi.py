@@ -429,6 +429,7 @@ class tvmMonitor( xbmc.Monitor ):
         """Starts the background process for automatic marking of played TV shows."""
         xbmc.Monitor.__init__( self )
         _upgrade()
+        self.WINDOW = xbmcgui.Window(10000)
         self._init_vars()
         self.LW.log( ['background monitor version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
         self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGNOTICE )
@@ -440,6 +441,7 @@ class tvmMonitor( xbmc.Monitor ):
                     self.PLAYINGEPISODETIME = self.KODIPLAYER.getTime()
                 except RuntimeError:
                     self.PLAYINGEPISODETIME = self.PLAYINGEPISODETIME
+        self._set_property('script.tvmi.hidemenu', '' )
         self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
 
 
@@ -502,6 +504,7 @@ class tvmMonitor( xbmc.Monitor ):
         self.SETTINGS = loadSettings()
         self.LW = Logger( preamble='[TVMI Monitor]', logdebug=self.SETTINGS['debug'] )
         self.LW.log( ['the settings are:', _logsafe_settings( self.SETTINGS )] )
+        self._set_property('script.tvmi.hidemenu', str( self.SETTINGS['hidemenu']).lower() )
         self.TVMCACHEFILE = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'tvm_followed_cache.json' )
         self.EPISODECACHE = os.path.join( self.SETTINGS['ADDONDATAPATH'], 'episode_cache.json' )
         self.KODIPLAYER = xbmc.Player()
@@ -571,6 +574,14 @@ class tvmMonitor( xbmc.Monitor ):
             elif thetype == 'removed':
                 self.REMOVEDITEMS.append( item )
                 self._update_episode_cache( epid=epid )
+
+
+    def _set_property( self, property_name, value='' ):
+        try:
+          self.WINDOW.setProperty( property_name, value )
+          self.LW.log( ['%s set to %s' % (property_name, value)] )
+        except Exception as e:
+          self.LW.log( ['Exception: Could not set property %s to value %s' % (property_name, value), e])
 
 
     def _update_episode_cache( self, epid=None, item=None, items=None ):

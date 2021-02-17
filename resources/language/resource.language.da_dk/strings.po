@@ -64,6 +64,10 @@ msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
 msgstr "Marker som set ved fjernelse fra Kodi"
 
+msgctxt "#32108"
+msgid "Hide context menu items"
+msgstr ""
+
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"

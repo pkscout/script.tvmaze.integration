@@ -4,8 +4,7 @@
 # *  original TV Maze Integration code by pkscout
 
 from kodi_six import xbmc, xbmcgui
-import json, os, re, sys
-from contextlib import contextmanager
+import contextlib, json, os, re, sys
 from resources.lib.apis import tvmaze
 from resources.lib.fileops import readFile, writeFile
 from resources.lib.xlogger import Logger
@@ -87,14 +86,14 @@ def _mark_one( show_info, mark_type, add_followed, tvmcache, tvmcachefile, tvmaz
 
 def _match_from_followed_shows( show_info, tvmcache, lw ):
     tvmazeid = ''
-    lw.log( ['using show name of %s' % show_info['name']], xbmc.LOGNOTICE )
+    lw.log( ['using show name of %s' % show_info['name']], xbmc.LOGINFO )
     if not tvmcache:
         return ''
     for followed_show in tvmcache:
         followed_name = followed_show['_embedded']['show']['name']
         lw.log( ['checking for %s matching %s' % (show_info['name'], followed_name)] )
         if followed_name == show_info['name']:
-            lw.log( ['found match for %s' % show_info['name'] ], xbmc.LOGNOTICE )
+            lw.log( ['found match for %s' % show_info['name'] ], xbmc.LOGINFO )
             tvmazeid = followed_show['show_id']
             break
     return tvmazeid
@@ -140,17 +139,21 @@ def _get_json( method, params, lw ):
     return r_dict.get( 'result', {} )
 
 def _startup( lw, settings, dialog ):
-    lw.log( ['script version %s started' % settings['ADDONVERSION']], xbmc.LOGNOTICE )
-    lw.log( ['debug logging set to %s' % settings['debug']], xbmc.LOGNOTICE )
+    lw.log( ['script version %s started' % settings['ADDONVERSION']], xbmc.LOGINFO )
+    lw.log( ['debug logging set to %s' % settings['debug']], xbmc.LOGINFO )
     if not (settings['tvmaze_user'] and settings['tvmaze_apikey']):
         dialog.ok( settings['ADDONLANGUAGE']( 32200 ), settings['ADDONLANGUAGE']( 32301 ) )
         settings['ADDON'].openSettings()
 
-@contextmanager
-def busyDialog():
-    xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
-    yield
-    xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
+
+
+class busyDialog():
+
+    def __enter__( self ):
+        xbmc.executebuiltin( 'ActivateWindow(busydialognocancel)' )
+    
+    def __exit__( self, *args ):
+        xbmc.executebuiltin( 'Dialog.Close(busydialognocancel)' )
 
 
 
@@ -261,7 +264,7 @@ class tvmManual:
             self._option_untag_shows()
         elif ret == 4:
             self.SETTINGS['ADDON'].openSettings()
-        self.LW.log( ['script version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+        self.LW.log( ['script version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
 
 
     def _init_vars( self ):
@@ -426,8 +429,8 @@ class tvmMonitor( xbmc.Monitor ):
         _upgrade()
         self.WINDOW = xbmcgui.Window(10000)
         self._init_vars()
-        self.LW.log( ['background monitor version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
-        self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGNOTICE )
+        self.LW.log( ['background monitor version %s started' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
+        self.LW.log( ['debug logging set to %s' % self.SETTINGS['debug']], xbmc.LOGINFO )
         while not self.abortRequested():
             if self.waitForAbort( 10 ):
                 break
@@ -437,7 +440,7 @@ class tvmMonitor( xbmc.Monitor ):
                 except RuntimeError:
                     self.PLAYINGEPISODETIME = self.PLAYINGEPISODETIME
         self._set_property('script.tvmi.hidemenu', '' )
-        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGNOTICE )
+        self.LW.log( ['background monitor version %s stopped' % self.SETTINGS['ADDONVERSION']], xbmc.LOGINFO )
 
 
     def onNotification( self, sender, method, data ):
@@ -457,12 +460,12 @@ class tvmMonitor( xbmc.Monitor ):
                 data = json.loads( data )
                 self.LW.log( ['MONITOR METHOD: %s DATA: %s' % (str( method ), str( data ))] )
                 played_percentage = (self.PLAYINGEPISODETIME / self.PLAYINGEPISODETOTALTIME) * 100
-                self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGNOTICE )
+                self.LW.log( ['got played percentage of %s' % str( played_percentage )], xbmc.LOGINFO )
                 if played_percentage >= float( self.SETTINGS['percent_watched'] ):
-                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGNOTICE )
+                    self.LW.log( ['item was played for the minimum percentage in settings, trying to mark'], xbmc.LOGINFO )
                     self._mark_episodes( 'playing' )
                 else:
-                    self.LW.log( ['item was not played long enough to be marked, skipping'], xbmc.LOGNOTICE )
+                    self.LW.log( ['item was not played long enough to be marked, skipping'], xbmc.LOGINFO )
                 self._reset_playing()
         elif 'VideoLibrary.OnScanStarted' in method:
             data = json.loads( data )

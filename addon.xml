@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.7.0" provider-name="pkscout">
+<addon id="script.tvmaze.integration" name="TV Maze Integration" version="0.7.1+matrix.1" provider-name="pkscout">
 	<requires>
-		<import addon="xbmc.python" version="2.26.0"/>
-		<import addon="script.module.kodi-six" version="0.0.3" />
-		<import addon="script.module.requests" version="2.22.0" />
+		<import addon="xbmc.python" version="3.0.0"/>
+		<import addon="script.module.requests" version="2.22.0+matrix.1" />
+		<import addon="script.module.kodi-six" version="0.1.3.1" />
 	</requires>
 	<extension point="xbmc.python.script" library="default.py" />
 	<extension point="xbmc.service" library="service.py" />
@@ -11,35 +11,35 @@
 		<menu id="kodi.core.main">
 			<menu>
 				<label>32401</label>
-				<item library="context-follow.py">
+				<item library="context.py" args="follow">
 					<label>32402</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-unfollow.py">
+				<item library="context.py" args="unfollow">
 					<label>32403</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-tag.py">
+				<item library="context.py" args="tag">
 					<label>32404</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-untag.py">
+				<item library="context.py" args="untag">
 					<label>32405</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(tvshows) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-mark-acquired.py">
+				<item library="context.py" args="mark_acquired">
 					<label>32406</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-mark-watched.py">
+				<item library="context.py" args="mark_watched">
 					<label>32407</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-mark-skipped.py">
+				<item library="context.py" args="mark_skipped">
 					<label>32408</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
-				<item library="context-unmark.py">
+				<item library="context.py" args="unmark">
 					<label>32409</label>
 					<visible>String.IsEqual(Window(10000).Property(script.tvmi.hidemenu),false) + Container.Content(episodes) + String.StartsWith(Container.FolderPath,videodb)</visible>
 				</item>
@@ -47,10 +47,8 @@
 	  </menu>
 	</extension>
 	<extension point="xbmc.addon.metadata">
-		<news>v.0.7.0
-- added option to hide context menu items
-- new language support via Weblate
-- cleanup of backend code
+		<news>v.0.7.1
+fix for Python3 logging issue
 		</news>
 		<assets>
 			<icon>icon.png</icon>

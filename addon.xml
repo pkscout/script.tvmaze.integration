@@ -53,11 +53,11 @@ fix for Python3 logging issue
 		<assets>
 			<icon>icon.png</icon>
 		</assets>
-		<summary lang="en_GB">Integration between Kodi and TV Maze.</summary>
-		<description lang="en_GB">This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows.</description>
 		<platform>all</platform>
 		<license>GPL-3.0-only</license>
 		<forum>https://forum.kodi.tv/showthread.php?tid=354945</forum>
 		<source>https://github.com/pkscout/script.tvmaze.integration</source>
+		<summary lang="en_GB">Integration between Kodi and TV Maze.</summary>
+		<description lang="en_GB">This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows.</description>
 	</extension>
 </addon>

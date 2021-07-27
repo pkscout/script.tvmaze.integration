@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC Addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-05-06 20:29+0000\n"
+"PO-Revision-Date: 2021-07-27 12:29+0000\n"
 "Last-Translator: Christian Gade <gade@kodi.tv>\n"
 "Language-Team: Danish <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/da_dk/>\n"
 "Language: da_dk\n"
@@ -15,12 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.6.1\n"
+"X-Generator: Weblate 4.7.2\n"
 
 # Section Headings
 msgctxt "#32000"
 msgid "General"
-msgstr "Generel"
+msgstr "Generelt"
 
 msgctxt "#32001"
 msgid "Advanced"
@@ -34,7 +34,7 @@ msgstr "TV Maze handling"
 # Settings
 msgctxt "#32100"
 msgid "Enable debug logging"
-msgstr "Aktivér fejlfindingslogføring"
+msgstr "Aktiver fejlfindingslogføring"
 
 msgctxt "#32101"
 msgid "TV Maze User"
@@ -50,11 +50,11 @@ msgstr "Tilføj nye Kodi-serier til den fulgte liste"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
-msgstr "Marker nye Kodi-episoder som erhvervet"
+msgstr "Marker nye Kodi-afsnit som erhvervet"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr "Marker sete Kodi-episoder som sete"
+msgstr "Marker sete Kodi-afsnit som sete"
 
 msgctxt "#32106"
 msgid "Mark watched after"
@@ -88,15 +88,15 @@ msgstr "Vælg serier der ikke skal følges"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Vælg nøgleord"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Vælg serier der skal tildeles nøgleord"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Vælg serier der skal have fjernet nøgleord"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
@@ -132,24 +132,24 @@ msgstr "Følg ikke serie"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Tildel nøgleord til serie"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Fjern nøgleord fra serie"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr "Marker episode som erhvervet"
+msgstr "Marker afsnit som erhvervet"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr "Marker episode som set"
+msgstr "Marker afsnit som set"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr "Marker episode som sprunget over"
+msgstr "Marker afsnit som sprunget over"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr "Marker ikke episode"
+msgstr "Marker ikke afsnit"

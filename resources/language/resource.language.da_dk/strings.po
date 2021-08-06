@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC Addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-07-27 12:29+0000\n"
+"PO-Revision-Date: 2021-08-06 17:29+0000\n"
 "Last-Translator: Christian Gade <gade@kodi.tv>\n"
 "Language-Team: Danish <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/da_dk/>\n"
 "Language: da_dk\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
-msgstr ""
+msgstr "Integration mellem Kodi og TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr ""
+msgstr "Denne integration giver dig mulighed for at markere serier som erhvervet på TV Maze (og føje dem til dine fulgte shows, hvis det er nødvendigt), når du tilføjer dem til dit bibliotek og markerer dem som set på TV Maze, efter du har set dem. Du kan også manuelt følge, fjerne, markere og fjerne markerede serier."
 
 # Section Headings
 msgctxt "#32000"

@@ -59,7 +59,9 @@ fix for Python3 logging issue
 		<source>https://github.com/pkscout/script.tvmaze.integration</source>
 		<summary lang="da_DK">Integration mellem Kodi og TV Maze.</summary>
 		<summary lang="en_GB">Integration between Kodi and TV Maze.</summary>
+		<summary lang="ko_KR">Kodi와 TV Maze의 통합.</summary>
 		<description lang="da_DK">Denne integration giver dig mulighed for at markere serier som erhvervet på TV Maze (og føje dem til dine fulgte shows, hvis det er nødvendigt), når du tilføjer dem til dit bibliotek og markerer dem som set på TV Maze, efter du har set dem. Du kan også manuelt følge, fjerne, markere og fjerne markerede serier.</description>
 		<description lang="en_GB">This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows.</description>
+		<description lang="ko_KR">시청후에 라이브러리에 추가하고 TV Maze에서 시청한 것으로 표시할 때, 이 통합으로 TV Maze에서 얻은 것으로 표시하고 필요한 경우 팔로우하는 프로그램에 추가할 수 있습니다 . 또한 프로그램을 수동으로 팔로우, 팔로우 해제, 태그 지정 및 태그 해제할 수 있습니다.</description>
 	</extension>
 </addon>

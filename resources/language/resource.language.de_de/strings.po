@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-26 09:30+0000\n"
-"Last-Translator: Chillbo <admin.weblate@contribute-osmc.com>\n"
+"PO-Revision-Date: 2023-02-06 23:15+0000\n"
+"Last-Translator: Demian <Demian@gmx.co.uk>\n"
 "Language-Team: German <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/de_de/>\n"
 "Language: de_de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8\n"
+"X-Generator: Weblate 4.15.2\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
@@ -23,7 +23,7 @@ msgstr "Integration zwischen Kodi und TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr "Diese Integration erlaubt das Markieren von Serien als über TV Maze bezogen (und das Hinzufügen zu den gefolgten Serien, falls benötigt), wenn sie zur Bibliothek hinzugefügt werden, und das Markrieren dieser als auf TV Maze angesehen, nachdem sie angesehen worden sind.  Das manuelle Folgen, Entfolgen, Taggen und Untaggen von Serien ist ebenso möglich."
+msgstr "Diese Integration erlaubt das Markieren von Serien als über TV Maze bezogen (und das Hinzufügen zu den beobachteten Serien, falls benötigt), wenn sie zur Bibliothek hinzugefügt werden, und das Markieren dieser als auf TV Maze angesehen, nachdem sie angesehen worden sind.  Das manuelle Folgen, Entfolgen, Taggen und Untaggen von Serien ist ebenso möglich."
 
 # Section Headings
 msgctxt "#32000"
@@ -36,21 +36,21 @@ msgstr "Erweitert"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr "TV Maze-Aktion"
+msgstr "TV-Maze-Aktion"
 
 # empty strings from id 32001 to 32099
 # Settings
 msgctxt "#32100"
 msgid "Enable debug logging"
-msgstr "Debug-Protokollierung aktivieren"
+msgstr "Debugprotokollierung aktivieren"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr "TV Maze-Nutzer"
+msgstr "TV-Maze-Nutzer"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr "TV Maze-API-Schlüssel"
+msgstr "TV-Maze-API-Schlüssel"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
@@ -110,7 +110,7 @@ msgstr "Serien zum Untaggen auswählen"
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr "TV Maze-API-Anmeldedaten müssen vor dem Fortsetzen angegeben werden."
+msgstr "TV-Maze-API-Anmeldedaten müssen vor dem Fortsetzen angegeben werden."
 
 msgctxt "#32302"
 msgid "Open settings"

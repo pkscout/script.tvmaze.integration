@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-02-18 23:15+0000\n"
+"PO-Revision-Date: 2023-03-08 13:16+0000\n"
 "Last-Translator: José Antonio Alvarado <jalvarado0.eses@gmail.com>\n"
 "Language-Team: Spanish (Spain) <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/es_es/>\n"
 "Language: es_es\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
-msgstr ""
+msgstr "Integración entre Kodi y TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
@@ -36,7 +36,7 @@ msgstr "Avanzado"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr ""
+msgstr "Acción TV Maze"
 
 # empty strings from id 32001 to 32099
 # Settings
@@ -46,15 +46,15 @@ msgstr "Habilitar modo depuración"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr ""
+msgstr "Usuario de TV Maze"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr ""
+msgstr "API Key de TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr ""
+msgstr "Añadir nuevas series Kodi a la lista de seguimiento"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
@@ -74,77 +74,77 @@ msgstr "Marca que se ha visto al quitarlo de Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr ""
+msgstr "Ocultar elementos del menú contextual"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"
 msgid "API Credentials Needed"
-msgstr ""
+msgstr "Credenciales API necesarias"
 
 msgctxt "#32201"
 msgid "Select action"
-msgstr ""
+msgstr "Seleccionar acción"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr ""
+msgstr "Seleccionar series para seguir"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr ""
+msgstr "Seleccionar series para dejar de seguir"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Seleccionar etiqueta"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Seleccionar series para etiquetar"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Seleccionar series para desetiquetar"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr ""
+msgstr "Las credenciales api de TV Maze deben proporcionarse antes de continuar."
 
 msgctxt "#32302"
 msgid "Open settings"
-msgstr ""
+msgstr "Abrir Ajustes"
 
 msgctxt "#32303"
 msgid "Select All (Click OK to reload list)"
-msgstr ""
+msgstr "Seleccionar todo (Haga clic en OK para recargar la lista)"
 
 msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
-msgstr ""
+msgstr "Deseleccionar todo (Haga clic en OK para recargar la lista)"
 
 # empty strings from 32305 to 32400
 # Context Menu
 msgctxt "#32401"
 msgid "TV Maze"
-msgstr ""
+msgstr "TV Maze"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr ""
+msgstr "Seguir serie"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr ""
+msgstr "Dejar de seguir la serie"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Etiquetar serie"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Desetiquetar serie"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"

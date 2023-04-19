@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-08-15 22:34+0000\n"
+"PO-Revision-Date: 2023-04-19 04:14+0000\n"
 "Last-Translator: Massimo Pissarello <mapi68@gmail.com>\n"
 "Language-Team: Italian <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/it_it/>\n"
 "Language: it_it\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.13\n"
+"X-Generator: Weblate 4.15.2\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
@@ -23,7 +23,7 @@ msgstr "Integrazione tra Kodi e TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr "Questa integrazione ti consente di contrassegnare i programmi come acquisiti su TV Maze (e aggiungerli ai programmi seguiti, se necessario) quando li aggiungi alla tua libreria e contrassegnarli come visti su TV Maze dopo averli guardati. Puoi anche seguire, smettere di seguire, taggare e rimuovere manualmente gli spettacoli."
+msgstr "Questa integrazione ti consente di contrassegnare le serie come acquisite su TV Maze (e di aggiungerle alle tue serie seguite, se necessario) quando le aggiungi alla tua libreria e di contrassegnarle come viste su TV Maze dopo averli guardate.  Puoi anche seguire manualmente, smettere di seguire, aggiungere e rimuovere etichette alle serie."
 
 # Section Headings
 msgctxt "#32000"
@@ -54,7 +54,7 @@ msgstr "Chiave API TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr "Aggiungi nuovi spettacoli di Kodi all'elenco seguito"
+msgstr "Aggiungi nuove serie di Kodi all'elenco dei seguiti"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
@@ -62,7 +62,7 @@ msgstr "Contrassegna i nuovi episodi di Kodi come acquisiti"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr "Segna come guardati gli episodi di Kodi mentre li guardi"
+msgstr "Contrassegna come guardati gli episodi guardati di Kodi"
 
 msgctxt "#32106"
 msgid "Mark watched after"
@@ -70,7 +70,7 @@ msgstr "Segna dopo come guardati"
 
 msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
-msgstr "Segba come guardati quando li rimuovi da Kodi"
+msgstr "Contrassegna come guardati quando li rimuovi da Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
@@ -88,23 +88,23 @@ msgstr "Seleziona azione"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr "Seleziona spettacoli da seguire"
+msgstr "Seleziona serie da seguire"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr "Seleziona spettacoli da non seguire"
+msgstr "Seleziona serie da non seguire"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr "Seleziona tag"
+msgstr "Seleziona etichetta"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr "Seleziona spettacoli da taggare"
+msgstr "Seleziona serie da etichettare"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr "Seleziona spettacoli da rimuovere dal tag"
+msgstr "Seleziona serie da rimuovere etichetta"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
@@ -132,32 +132,32 @@ msgstr "TV Maze"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr "Segui spettacolo"
+msgstr "Segui serie"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr "Non seguire spettacolo"
+msgstr "Non seguire serie"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr "Tagga spettacolo"
+msgstr "Etichetta serie"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr "Rimuovi tag da spettacolo"
+msgstr "Rimuovi etichetta da serie"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr "Segna episodio acquisito"
+msgstr "Contrassegna episodio come acquisito"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr "Segna episodio guardato"
+msgstr "Contrassegna episodio come guardato"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr "Segna episodio saltato"
+msgstr "Contrassegna episodio come saltato"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr "Deseleziona episodio"
+msgstr "Rimuovi contrassegno da episodio"

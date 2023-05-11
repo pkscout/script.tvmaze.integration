@@ -3,8 +3,8 @@
 # *
 # *  original TV Maze Integration code by pkscout
 
-from kodi_six import xbmc, xbmcgui
-import contextlib
+import xbmc
+import xbmcgui
 import json
 import os
 import re

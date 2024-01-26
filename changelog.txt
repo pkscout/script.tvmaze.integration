@@ -1,3 +1,6 @@
+v.0.8.0
+- fix for translatePath error on Nexus
+
 v.0.7.1
 - fix for Python3 logging error
 

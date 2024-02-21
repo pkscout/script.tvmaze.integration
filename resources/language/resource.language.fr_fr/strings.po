@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2023-07-18 17:11+0000\n"
+"PO-Revision-Date: 2024-02-21 16:13+0000\n"
 "Last-Translator: skypichat <skypichat@hotmail.fr>\n"
 "Language-Team: French (France) <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/fr_fr/>\n"
 "Language: fr_fr\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.18.2\n"
+"X-Generator: Weblate 5.4\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
@@ -126,7 +126,6 @@ msgstr "Tout désélectionner (Cliquer OK pour recharger la liste)"
 
 # empty strings from 32305 to 32400
 # Context Menu
-#, fuzzy
 msgctxt "#32401"
 msgid "TV Maze"
 msgstr "TV Maze"

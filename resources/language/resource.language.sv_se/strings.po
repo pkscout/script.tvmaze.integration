@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-04-07 16:55+0000\n"
+"PO-Revision-Date: 2025-04-11 02:06+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/sv_se/>\n"
 "Language: sv_se\n"
@@ -36,7 +36,7 @@ msgstr "Avancerat"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr ""
+msgstr "Åtgärd för TV Maze"
 
 # empty strings from id 32001 to 32099
 # Settings
@@ -46,118 +46,118 @@ msgstr "Aktivera felsökningsloggning"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr ""
+msgstr "Användare för TV Maze"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr ""
+msgstr "API-nyckel för TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr ""
+msgstr "Lägg till nya Kodi-serier till följande lista"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
-msgstr ""
+msgstr "Markera nya Kodi-avsnitt som förvärvade"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr ""
+msgstr "Markera sedda Kodi-avsnitt som sedda"
 
 msgctxt "#32106"
 msgid "Mark watched after"
-msgstr ""
+msgstr "Markera sedda efter"
 
 msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
-msgstr ""
+msgstr "Markera sedda vid borttagning från Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr ""
+msgstr "Dölj kontextmenyposter"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"
 msgid "API Credentials Needed"
-msgstr ""
+msgstr "API-uppgifter behövs"
 
 msgctxt "#32201"
 msgid "Select action"
-msgstr ""
+msgstr "Välj åtgärd"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr ""
+msgstr "Välj serier att följa"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr ""
+msgstr "Välj serier att avfölja"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Välj tagg"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Välj serier att tagga"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Välj serier att avtagga"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr ""
+msgstr "API-autentiseringsuppgifter för TV Maze måste anges innan du fortsätter."
 
 msgctxt "#32302"
 msgid "Open settings"
-msgstr ""
+msgstr "Öppna inställningar"
 
 msgctxt "#32303"
 msgid "Select All (Click OK to reload list)"
-msgstr ""
+msgstr "Markera alla (Klicka på OK för att uppdatera listan)"
 
 msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
-msgstr ""
+msgstr "Avmarkera alla (Klicka på OK för att uppdatera listan)"
 
 # empty strings from 32305 to 32400
 # Context Menu
 msgctxt "#32401"
 msgid "TV Maze"
-msgstr ""
+msgstr "TV Maze"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr ""
+msgstr "Följ serie"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr ""
+msgstr "Avfölj serie"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Tagga serie"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Avtagga serie"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr ""
+msgstr "Markera avsnitt som förvärvad"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr ""
+msgstr "Markera avsnitt som sedd"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr ""
+msgstr "Markera avsnitt som överhoppat"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr ""
+msgstr "Avmarkera avsnitt"

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2025-04-11 02:06+0000\n"
+"PO-Revision-Date: 2025-04-23 06:56+0000\n"
 "Last-Translator: Daniel Nylander <daniel@danielnylander.se>\n"
 "Language-Team: Swedish <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/sv_se/>\n"
 "Language: sv_se\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.11\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
@@ -74,7 +74,7 @@ msgstr "Markera sedda vid borttagning från Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr "Dölj kontextmenyposter"
+msgstr "Dölj kontextmenyobjekt"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings

@@ -5,38 +5,38 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC Addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-05-06 20:29+0000\n"
-"Last-Translator: Christian Gade <gade@kodi.tv>\n"
+"PO-Revision-Date: 2025-08-28 22:31+0000\n"
+"Last-Translator: SecularSteve <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/bs_ba/>\n"
 "Language: bs_ba\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.6.1\n"
+"X-Generator: Weblate 5.13\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
-msgstr ""
+msgstr "Integracija između Kodija i TV Mazea."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr ""
+msgstr "Ova integracija vam omogućava da označite emisije kao preuzete na TV Mazeu (i dodate ih u emisije koje pratite ako je potrebno) kada ih dodate u svoju biblioteku i označite ih kao gledane na TV Mazeu nakon što ih pogledate. Također možete ručno pratiti, prestati pratiti, označiti i ukloniti oznaku s emisija."
 
 # Section Headings
 msgctxt "#32000"
 msgid "General"
-msgstr "Opšte"
+msgstr "Općenito"
 
 msgctxt "#32001"
 msgid "Advanced"
-msgstr ""
+msgstr "Napredno"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr ""
+msgstr "Akcija TV Labirinta"
 
 # empty strings from id 32001 to 32099
 # Settings
@@ -46,118 +46,118 @@ msgstr "Omogući bilježenje grešaka"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr ""
+msgstr "Korisnik TV Maze-a"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr ""
+msgstr "API ključ TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr ""
+msgstr "Dodajte nove Kodi serije na listu za praćenje"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
-msgstr ""
+msgstr "Označi nove Kodi epizode kao preuzete"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr ""
+msgstr "Mark je gledao Kodi epizode kao što je gledao"
 
 msgctxt "#32106"
 msgid "Mark watched after"
-msgstr ""
+msgstr "Marko je gledao nakon"
 
 msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
-msgstr ""
+msgstr "Mark je gledao prilikom skidanja sa Kodija"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr ""
+msgstr "Sakrij stavke kontekstnog menija"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"
 msgid "API Credentials Needed"
-msgstr ""
+msgstr "Potrebni API akreditivi"
 
 msgctxt "#32201"
 msgid "Select action"
-msgstr ""
+msgstr "Odaberite radnju"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr ""
+msgstr "Odaberite emisije koje želite pratiti"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr ""
+msgstr "Odaberite emisije koje želite prestati pratiti"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Odaberite oznaku"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Odaberite emisije za označavanje"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Odaberite emisije za uklanjanje oznaka"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr ""
+msgstr "Prije nastavka morate unijeti vjerodajnice za TV Maze API."
 
 msgctxt "#32302"
 msgid "Open settings"
-msgstr ""
+msgstr "Otvori postavke"
 
 msgctxt "#32303"
 msgid "Select All (Click OK to reload list)"
-msgstr ""
+msgstr "Odaberi sve (Kliknite na OK da biste ponovo osvježili listu)"
 
 msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
-msgstr ""
+msgstr "Poništi odabir svih (Kliknite na OK da biste ponovo osvježili listu)"
 
 # empty strings from 32305 to 32400
 # Context Menu
 msgctxt "#32401"
 msgid "TV Maze"
-msgstr ""
+msgstr "TV labirint"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr ""
+msgstr "Prati emisiju"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr ""
+msgstr "Prestani pratiti emisiju"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Oznaka emisije"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Ukloni oznaku emisije"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr ""
+msgstr "Označi epizodu preuzetu"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr ""
+msgstr "Markova epizoda je odgledana"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr ""
+msgstr "Označi epizodu kao preskočenu"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr ""
+msgstr "Ukloni oznaku iz epizode"

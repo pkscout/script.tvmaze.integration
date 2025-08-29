@@ -56,6 +56,7 @@ fix for translatePath error in Nexus
 		<license>GPL-3.0-only</license>
 		<forum>https://forum.kodi.tv/showthread.php?tid=354945</forum>
 		<source>https://github.com/pkscout/script.tvmaze.integration</source>
+		<summary lang="bs_BA">Integracija između Kodija i TV Mazea.</summary>
 		<summary lang="da_DK">Integration mellem Kodi og TV Maze.</summary>
 		<summary lang="de_DE">Integration zwischen Kodi und TV Maze.</summary>
 		<summary lang="en_GB">Integration between Kodi and TV Maze.</summary>
@@ -68,6 +69,7 @@ fix for translatePath error in Nexus
 		<summary lang="pt_BR">Integração entre Kodi e TV Maze.</summary>
 		<summary lang="sv_SE">Integration mellan Kodi och TV Maze.</summary>
 		<summary lang="zh_CN">Kodi与TV Maze的集成。</summary>
+		<description lang="bs_BA">Ova integracija vam omogućava da označite emisije kao preuzete na TV Mazeu (i dodate ih u emisije koje pratite ako je potrebno) kada ih dodate u svoju biblioteku i označite ih kao gledane na TV Mazeu nakon što ih pogledate. Također možete ručno pratiti, prestati pratiti, označiti i ukloniti oznaku s emisija.</description>
 		<description lang="da_DK">Denne integration giver dig mulighed for at markere serier som erhvervet på TV Maze (og føje dem til dine fulgte shows, hvis det er nødvendigt), når du tilføjer dem til dit bibliotek og markerer dem som set på TV Maze, efter du har set dem. Du kan også manuelt følge, fjerne, markere og fjerne markerede serier.</description>
 		<description lang="de_DE">Diese Integration erlaubt das Markieren von Serien als über TV Maze bezogen (und das Hinzufügen zu den beobachteten Serien, falls benötigt), wenn sie zur Bibliothek hinzugefügt werden, und das Markieren dieser als auf TV Maze angesehen, nachdem sie angesehen worden sind.  Das manuelle Folgen, Entfolgen, Taggen und Untaggen von Serien ist ebenso möglich.</description>
 		<description lang="en_GB">This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows.</description>

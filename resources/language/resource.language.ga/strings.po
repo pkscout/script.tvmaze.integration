@@ -5,159 +5,159 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: XBMC Addons\n"
-"Report-Msgid-Bugs-To: alanwww1@xbmc.org\n"
+"Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-09-15 10:29+0000\n"
+"Last-Translator: Aindriú Mac Giolla Eoin <aindriu80@gmail.com>\n"
+"Language-Team: Irish <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/ga/>\n"
 "Language: ga\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :("
-"n>6 && n<11) ? 3 : 4;\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>6 && n<11) ? 3 : 4;\n"
+"X-Generator: Weblate 5.13.3\n"
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
-msgstr ""
+msgstr "Comhtháthú idir Kodi agus TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr ""
+msgstr "Leis an gcomhtháthú seo, is féidir leat seónna a mharcáil mar cheannaithe ar TV Maze (agus iad a chur le seónna a leanann tú más gá) nuair a chuireann tú le do leabharlann iad agus iad a mharcáil mar fheicthe ar TV Maze tar éis duit féachaint orthu. Is féidir leat seónna a leanúint, a dhíleanúint, a chlibeáil agus a dhíchlibeáil de láimh freisin."
 
 # Section Headings
 msgctxt "#32000"
 msgid "General"
-msgstr ""
+msgstr "Ginearálta"
 
 msgctxt "#32001"
 msgid "Advanced"
-msgstr ""
+msgstr "Ardleibhéil"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr ""
+msgstr "Gníomh teilifíse Maze"
 
 # empty strings from id 32001 to 32099
 # Settings
 msgctxt "#32100"
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Cumasaigh logáil dífhabhtaithe"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr ""
+msgstr "Úsáideoir Maze Teilifíse"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr ""
+msgstr "Eochair API TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr ""
+msgstr "Cuir seónna nua Kodi leis an liosta leantacha"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
-msgstr ""
+msgstr "Marcáil eipeasóidí nua Kodi mar a fuarthas"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr ""
+msgstr "D’fhéach Mark ar eipeasóidí Kodi mar a d’fhéach sé orthu"
 
 msgctxt "#32106"
 msgid "Mark watched after"
-msgstr ""
+msgstr "D’fhéach Marc ina dhiaidh"
 
 msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
-msgstr ""
+msgstr "D’fhéach Mark agus é ag baint as Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr ""
+msgstr "Folaigh míreanna roghchláir chomhthéacs"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"
 msgid "API Credentials Needed"
-msgstr ""
+msgstr "Dintiúir API Riachtanacha"
 
 msgctxt "#32201"
 msgid "Select action"
-msgstr ""
+msgstr "Roghnaigh gníomh"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr ""
+msgstr "Roghnaigh seónna le leanúint"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr ""
+msgstr "Roghnaigh seónna le díleanúint"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Roghnaigh clib"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Roghnaigh seónna le clibeáil"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Roghnaigh seónna le baint den chlib"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr ""
+msgstr "Ní mór dintiúir API TV Maze a sholáthar sula leanann tú ar aghaidh."
 
 msgctxt "#32302"
 msgid "Open settings"
-msgstr ""
+msgstr "Oscail socruithe"
 
 msgctxt "#32303"
 msgid "Select All (Click OK to reload list)"
-msgstr ""
+msgstr "Roghnaigh Uile (Cliceáil Ceart go leor chun an liosta a athlódáil)"
 
 msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
-msgstr ""
+msgstr "Díroghnaigh Gach Rud (Cliceáil Ceart go leor chun an liosta a athlódáil)"
 
 # empty strings from 32305 to 32400
 # Context Menu
 msgctxt "#32401"
 msgid "TV Maze"
-msgstr ""
+msgstr "TV Maze"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr ""
+msgstr "Lean an seó"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr ""
+msgstr "Dílean an seó"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Taispeántas clibeanna"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Díchlib an seó"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr ""
+msgstr "Marcáil eipeasóid a fuarthas"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr ""
+msgstr "Breathnaíodh ar eipeasóid Marc"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr ""
+msgstr "Marcáil eipeasóid scipeáilte"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr ""
+msgstr "Dímharcáil an eipeasóid"

@@ -83,6 +83,6 @@ fix for translatePath error in Nexus
 		<description lang="ko_KR">시청후에 라이브러리에 추가하고 TV Maze에서 시청한 것으로 표시할 때, 이 통합으로 TV Maze에서 얻은 것으로 표시하고 필요한 경우 팔로우하는 프로그램에 추가할 수 있습니다 . 또한 프로그램을 수동으로 팔로우, 팔로우 해제, 태그 지정 및 태그 해제할 수 있습니다.</description>
 		<description lang="pt_BR">Essa integração permite marcar programas como adquiridos no TV Maze (e adicioná-los aos programas seguidos, se necessário) ao adicioná-los à sua biblioteca e marcá-los como assistidos no TV Maze depois de assisti-los. · · Você também pode seguir, deixar de seguir, marcar e desmarcar programas manualmente.</description>
 		<description lang="sv_SE">Med denna integration kan du markera program som förvärvade på TV Maze (och lägga till dem i dina följda program om det behövs) när du lägger till dem i ditt bibliotek och markera dem som sedda på TV Maze när du har sett dem.  Du kan också manuellt följa, avfölja, tagga och avtagga program.</description>
-		<description lang="zh_CN">这种集成允许您在TV Maze上获取节目（并在当需要时将其添加到您的关注）当您将其添加到您的库中，观看后会将其标记在TV Maze。  您还可以手动关注、取消关注、标记和取消标记放映。</description>
+		<description lang="zh_CN">这种集成允许您在 TV Maze 上获取节目（并在当需要时将其添加到您的关注）当您将其添加到您的库中，观看后会将其标记在 TV Maze。  您还可以手动关注、取消关注、标记和取消标记放映。</description>
 	</extension>
 </addon>

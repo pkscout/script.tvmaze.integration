@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: XBMC Addons\n"
 "Report-Msgid-Bugs-To: translations@kodi.tv\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2026-05-16 19:16+0000\n"
+"PO-Revision-Date: 2026-05-24 20:16+0000\n"
 "Last-Translator: Andrei Stepanov <adem4ik@gmail.com>\n"
 "Language-Team: Russian <https://kodi.weblate.cloud/projects/kodi-add-ons-scripts/script-tvmaze-integration/ru_ru/>\n"
 "Language: ru_ru\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 msgctxt "Addon Summary"
 msgid "Integration between Kodi and TV Maze."
-msgstr ""
+msgstr "Интеграция между Kodi и TV Maze."
 
 msgctxt "Addon Description"
 msgid "This integration allows you to mark shows as acquired on TV Maze (and add them to your followed shows if needed) when you add them to your library and mark them as watched on TV Maze after you watch them.  You can also manually follow, unfollow, tag, and untag shows."
-msgstr ""
+msgstr "Эта интеграция позволяет отмечать передачи как приобретённые на TV Maze (и добавлять их в список отслеживаемых, если необходимо), когда вы добавляете их в свою медиатеку, а также отмечать их как просмотренные на TV Maze после просмотра. Вы также можете вручную добавлять в отслеживаемые, удалять из отслеживаемых, добавлять теги и удалять теги передач."
 
 # Section Headings
 msgctxt "#32000"
@@ -36,7 +36,7 @@ msgstr "Расширенный"
 
 msgctxt "#32002"
 msgid "TV Maze action"
-msgstr ""
+msgstr "Действие TV Maze"
 
 # empty strings from id 32001 to 32099
 # Settings
@@ -46,41 +46,41 @@ msgstr "Включить журнал отладки"
 
 msgctxt "#32101"
 msgid "TV Maze User"
-msgstr ""
+msgstr "Пользователь TV Maze"
 
 msgctxt "#32102"
 msgid "TV Maze API Key"
-msgstr ""
+msgstr "API-ключ TV Maze"
 
 msgctxt "#32103"
 msgid "Add new Kodi shows to followed list"
-msgstr ""
+msgstr "Добавлять новые передачи Kodi в список отслеживаемых"
 
 msgctxt "#32104"
 msgid "Mark new Kodi episodes as acquired"
-msgstr ""
+msgstr "Отмечать новые серии Kodi как приобретённые"
 
 msgctxt "#32105"
 msgid "Mark watched Kodi episodes as watched"
-msgstr ""
+msgstr "Отмечать просмотренные серии Kodi как просмотренные"
 
 msgctxt "#32106"
 msgid "Mark watched after"
-msgstr ""
+msgstr "Отмечать как просмотренное после"
 
 msgctxt "#32107"
 msgid "Mark watched when removing from Kodi"
-msgstr ""
+msgstr "Отмечать как просмотренное при удалении из Kodi"
 
 msgctxt "#32108"
 msgid "Hide context menu items"
-msgstr ""
+msgstr "Скрывать пункты контекстного меню"
 
 # empty strings from id 32108 to 32199
 # Dialog Headings
 msgctxt "#32200"
 msgid "API Credentials Needed"
-msgstr ""
+msgstr "Требуются учётные данные API"
 
 msgctxt "#32201"
 msgid "Select action"
@@ -88,76 +88,76 @@ msgstr "Выберите действие"
 
 msgctxt "#32202"
 msgid "Select shows to follow"
-msgstr ""
+msgstr "Выберите передачи для добавления в отслеживаемые"
 
 msgctxt "#32203"
 msgid "Select shows to unfollow"
-msgstr ""
+msgstr "Выберите передачи для удаления из отслеживаемых"
 
 msgctxt "#32204"
 msgid "Select tag"
-msgstr ""
+msgstr "Выберите тег"
 
 msgctxt "#32205"
 msgid "Select shows to tag"
-msgstr ""
+msgstr "Выберите передачи для добавления тега"
 
 msgctxt "#32206"
 msgid "Select shows to untag"
-msgstr ""
+msgstr "Выберите передачи для удаления тега"
 
 # empty strings from id 32207 to 32300
 # Dialog Messages
 msgctxt "#32301"
 msgid "TV Maze api credentials must be provided before continuing."
-msgstr ""
+msgstr "Учётные данные API TV Maze должны быть предоставлены перед продолжением."
 
 msgctxt "#32302"
 msgid "Open settings"
-msgstr ""
+msgstr "Открыть настройки"
 
 msgctxt "#32303"
 msgid "Select All (Click OK to reload list)"
-msgstr ""
+msgstr "Выбрать всё (нажмите OK для перезагрузки списка)"
 
 msgctxt "#32304"
 msgid "Deselect All (Click OK to reload list)"
-msgstr ""
+msgstr "Снять выделение со всех (нажмите OK для перезагрузки списка)"
 
 # empty strings from 32305 to 32400
 # Context Menu
 msgctxt "#32401"
 msgid "TV Maze"
-msgstr ""
+msgstr "TV Maze"
 
 msgctxt "#32402"
 msgid "Follow show"
-msgstr ""
+msgstr "Добавить передачу в отслеживаемые"
 
 msgctxt "#32403"
 msgid "Unfollow show"
-msgstr ""
+msgstr "Удалить передачу из отслеживаемых"
 
 msgctxt "#32404"
 msgid "Tag show"
-msgstr ""
+msgstr "Добавить тег передачи"
 
 msgctxt "#32405"
 msgid "Untag show"
-msgstr ""
+msgstr "Удалить тег передачи"
 
 msgctxt "#32406"
 msgid "Mark episode acquired"
-msgstr ""
+msgstr "Отметить серию как приобретённую"
 
 msgctxt "#32407"
 msgid "Mark episode watched"
-msgstr ""
+msgstr "Отметить серию как просмотренную"
 
 msgctxt "#32408"
 msgid "Mark episode skipped"
-msgstr ""
+msgstr "Отметить серию как пропущенную"
 
 msgctxt "#32409"
 msgid "Unmark episode"
-msgstr ""
+msgstr "Снять отметку с серии"
